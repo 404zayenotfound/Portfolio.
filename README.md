@@ -1,2 +1,2 @@
 # Portfolio.
-My simple demo portfolio for wev dev work.
+Just need somewhere to host this up. 
