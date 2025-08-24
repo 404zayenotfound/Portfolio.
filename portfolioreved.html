@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404zayenotfound.portfolio.</title>
+  <meta name="description" content="404zayenotfound. Zaye's official portfolio." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Color system: forest green + midnight */
+      --bg: #0b0f0e;            /* near-black with green hint */
+      --panel: #0f1513;         /* slightly lighter */
+      --ink: #e8efe9;           /* off-white */
+      --muted: #b7c2bb;         /* soft grey-green */
+      --brand: #1db954;         /* vibrant green */
+      --brand-2: #6ee7b7;       /* mint accent */
+      --accent: #a3e635;        /* lime pop */
+      --warn: #f59e0b;          /* amber */
+      --outline: #143026;       /* deep green outline */
+
+      --radius: 20px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25);
+      --blur: saturate(160%) blur(8px);
+    }
+
+    /* Base */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--ink); background: radial-gradient(1200px 800px at 10% 10%, #0d1713 0%, transparent 60%),
+                                      radial-gradient(1000px 700px at 90% 0%, #101a14 0%, transparent 60%),
+                                      linear-gradient(180deg, #070b09, #0b0f0e);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.6; letter-spacing: .1px;
+    }
+    img{max-width:100%; display:block}
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1100px, 92vw); margin-inline:auto}
+
+    /* Header / Nav */
+    header{position:sticky; top:0; z-index:50;}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 18px; margin:10px auto; width:min(1100px, 94vw);
+      border:1px solid var(--outline);
+      background: color-mix(in oklab, var(--panel) 70%, transparent);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+    }
+    .brand{display:flex; gap:10px; align-items:center; font-weight:800; letter-spacing:.5px}
+    .dot{width:12px; height:12px; border-radius:50%; background:conic-gradient(from 0deg, var(--brand), var(--brand-2), var(--accent), var(--brand)); box-shadow:0 0 18px rgba(109, 253, 181, .35)}
+    .nav a{opacity:.9}
+    .nav a:hover{opacity:1}
+    .links{display:flex; gap:18px; align-items:center; font-weight:600}
+    .cta{padding:10px 16px; border-radius:999px; border:1px solid var(--outline); background: linear-gradient(180deg, #122018, #0e1a14); box-shadow: var(--shadow)}
+    .cta:hover{transform: translateY(-1px)}
+
+    /* Hero */
+    .hero{position:relative; isolation:isolate; padding: 110px 0 90px}
+    .hero .glow{
+      position:absolute; inset:-40px; z-index:-1; filter: blur(70px) saturate(160%);
+      background: radial-gradient(500px 500px at 20% 30%, rgba(29,185,84,.25), transparent 60%),
+                  radial-gradient(600px 600px at 80% 10%, rgba(110,231,183,.2), transparent 60%),
+                  radial-gradient(600px 600px at 50% 80%, rgba(163,230,53,.18), transparent 60%);
+      opacity:.8;
+    }
+    .title{font-family:"Playfair Display", serif; font-weight:800; font-size: clamp(2.6rem, 6vw, 4.5rem); line-height:1.05; margin:0}
+    .subtitle{font-size: clamp(1rem, 2.4vw, 1.2rem); color:var(--muted); max-width: 60ch}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:26px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; border:1px solid var(--outline); background:linear-gradient(180deg, #13221a, #0e1913); font-weight:700}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.secondary{background:transparent; border:1px dashed var(--outline)}
+
+/* Sections */
+section {
+  padding: 80px 0;
+  scroll-margin-top: 120px; /* offset for sticky nav */
+}
+.kicker {
+  display: inline-block;
+  font-weight: 800;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--brand-2);
+  margin-bottom: 14px;
+}
+h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin: 0 0 16px;
+}
+.lead {
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+
+
+    /* Feature grid */
+    .grid{display:grid; gap:18px}
+    .grid-3{grid-template-columns:repeat(3, 1fr)}
+    @media (max-width:900px){.grid-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid-3{grid-template-columns:1fr}}
+
+    .card{
+      padding:22px; border-radius:var(--radius); border:1px solid var(--outline);
+      background: color-mix(in oklab, var(--panel) 85%, transparent);
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, outline-color .2s ease;
+      outline: 2px solid transparent;
+    }
+    .card:hover{transform: translateY(-4px); outline-color: color-mix(in oklab, var(--brand) 60%, transparent)}
+    .card h3{margin:10px 0 6px}
+    .eyebrow{font-weight:700; color:var(--brand-2); font-size:.9rem}
+    .meta{color:var(--muted); font-size:.95rem}
+
+    /* Showcase Gallery */
+    .gallery{display:grid; grid-template-columns: 2fr 1fr 1fr; gap:14px}
+    .gallery .tile{position:relative; aspect-ratio: 4/3; border-radius:16px; overflow:hidden; border:1px solid var(--outline); background:#101613}
+    .tile::after{content:""; position:absolute; inset:0; background: linear-gradient(180deg, transparent, rgba(0,0,0,.25));}
+    .tile span{position:absolute; left:10px; bottom:8px; font-weight:700; font-size:.9rem}
+    .tile:hover{outline:2px solid color-mix(in oklab, var(--brand) 60%, transparent); outline-offset:-2px}
+    @media (max-width:900px){.gallery{grid-template-columns: 1fr 1fr}}
+    @media (max-width:640px){.gallery{grid-template-columns: 1fr}}
+
+    /* About split */
+    .split{display:grid; grid-template-columns:1.2fr 1fr; gap:26px; align-items:center}
+    @media (max-width:900px){.split{grid-template-columns:1fr}}
+    .blob{
+      border-radius:28px; border:1px solid var(--outline); background: radial-gradient(200px 200px at 30% 15%, rgba(29,185,84,.12), transparent), linear-gradient(180deg, #0f1513, #0c1411); padding:18px; box-shadow: var(--shadow)
+    }
+
+    /* Quote */
+    blockquote{margin:0; padding:26px; border-radius:var(--radius); border:1px dashed var(--outline); background: #0e1512}
+    blockquote p{margin:0 0 8px; font-size:1.1rem}
+    blockquote cite{color:var(--muted); font-style:normal}
+
+    /* Contact */
+    form{display:grid; gap:12px; max-width:650px}
+    input, textarea{
+      background: #0c1411; color:var(--ink); border:1px solid var(--outline); border-radius:14px; padding:12px 14px; font: inherit
+    }
+    textarea{min-height:140px; resize:vertical}
+    .hint{color:var(--muted); font-size:.9rem}
+
+    /* Footer */
+    footer{padding:36px 0 60px; color:var(--muted); text-align:center}
+
+    /* Motion safety */
+    @media (prefers-reduced-motion: reduce){
+      *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header aria-label="Primary">
+    <nav class="nav" role="navigation">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> <a href="#top" aria-label="Home">Portfolio.404zayenotfound</a></div>
+      <div class="links" aria-label="Sections">
+        <a href="#features">Features</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#about">About</a>
+        <a class="cta" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="container">
+      <p class="kicker">404zayenotfound</p>
+      <h1 class="title">Where aesthetics meet accessibility and convenience.</h1>
+      <p class="subtitle">  Copy, remix, deploy.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#features">Explore the features →</a>
+     
+      </div>
+    </div>
+  </main>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <p class="kicker">Features</p>
+      <h2>Beautiful by default. Customizable by design.</h2>
+      <p class="lead"> What I've got to give you. What I will always give you. No frameworks, no build step. Just copy the file and go. Responsive grid, accessible color contrast, sticky nav, smooth scrolling, and cards that glide.</p>
+
+      <div class="grid grid-3" style="margin-top:20px">
+        <article class="card">
+          <div class="eyebrow">Aesthetic</div>
+          <h3>Dark forest palette</h3>
+          <p class="meta">Accents on a midnight canvas.Simplicity, elegance and taste.</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Responsive</div>
+          <h3>Grid that just works</h3>
+          <p class="meta">Stacks gracefully from desktop to mobile. Zero layout shifts, no weird breakpoints.</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Accessible</div>
+          <h3>Contrast + motion care</h3>
+          <p class="meta">Meets contrast needs, respects <code>prefers-reduced-motion</code>, and keeps focus states crisp.</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Lightweight</div>
+          <h3>Single file simplicity</h3>
+          <p class="meta">Under a few KB of CSS. Bring your own components or keep it minimal.</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Flexible</div>
+          <h3>Design tokens</h3>
+          <p class="meta">Tweak <code>:root</code> variables to instantly reskin colors, radius, shadows, and blur.</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Ready</div>
+          <h3>Copy → paste → deploy</h3>
+          <p class="meta">Perfect for portfolios, product teasers, or elegant landing pages.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+<!-- SHOWCASE -->
+<section id="showcase">
+  <div class="container">
+    <p class="kicker">Showcase</p>
+    <h2>Looks that linger.</h2>
+    <p class="lead">Here's a sneak-peek at some things I've worked..all because I'm bored, of course. A diary to test case-convertion, a triad network because why not, and a command center to manage kids, because I'm lazy to do it manually.</p>
+
+    <div class="gallery" style="margin-top:18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px;">
+      <figure class="tile" style="background:#111; display:flex; align-items:center; justify-content:center; border-radius:12px; overflow:hidden;">
+        <a href="#modal-triad">
+          <img src="https://raw.githubusercontent.com/404zayenotfound/Portfolio./main/triad.png" alt="Triad Project" style="width:100%; height:100%; object-fit:contain;">
+        </a>
+        <span>Triad • Project</span>
+      </figure>
+      <figure class="tile" style="background:#111; display:flex; align-items:center; justify-content:center; border-radius:12px; overflow:hidden;">
+        <a href="#modal-balabyte">
+          <img src="https://raw.githubusercontent.com/404zayenotfound/Portfolio./main/balabyte%20prev.png" alt="Balabyte Preview" style="width:100%; height:100%; object-fit:contain;">
+        </a>
+        <span>Balabyte • Preview</span>
+      </figure>
+      <figure class="tile" style="background:#111; display:flex; align-items:center; justify-content:center; border-radius:12px; overflow:hidden;">
+        <a href="#modal-diary">
+          <img src="https://raw.githubusercontent.com/404zayenotfound/Portfolio./main/screesnhotdiary.png" alt="Diary Screenshot" style="width:100%; height:100%; object-fit:contain;">
+        </a>
+        <span>Diary • Screenshot</span>
+      </figure>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <div id="modal-triad" class="modal">
+    <a href="#"><img src="https://raw.githubusercontent.com/404zayenotfound/Portfolio./main/triad.png" alt="Triad Project"></a>
+  </div>
+  <div id="modal-balabyte" class="modal">
+    <a href="#"><img src="https://raw.githubusercontent.com/404zayenotfound/Portfolio./main/balabyte%20prev.png" alt="Balabyte Preview"></a>
+  </div>
+  <div id="modal-diary" class="modal">
+    <a href="#"><img src="https://raw.githubusercontent.com/404zayenotfound/Portfolio./main/screesnhotdiary.png" alt="Diary Screenshot"></a>
+  </div>
+
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      padding-top: 60px;
+      text-align: center;
+    }
+
+    .modal img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 12px;
+    }
+
+    .modal:target {
+      display: block;
+    }
+  </style>
+</section>
+
+
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container split">
+      <div>
+        <p class="kicker">About my work and me, myself, and I.</p>
+        <h2>Simplicity. Elegance. Personality.</h2>
+        <p class="lead">My work is not defined by flashy lights. Instead, I've got understanding. Coherent spacing,better words and a color system that feels like your brand personified. Myself, I'm someone that likes to do things. Create. Apparently, I suck at art and craft so now I've turned to code. I'll try my best to help you out, always.</p>
+        <blockquote>
+          <p>“Design is the silent ambassador of your brand.”</p>
+          <cite>— Paul Rand </cite>
+        </blockquote>
+      </div>
+      <div class="blob">
+        <img alt="Abstract green glow with shapes" src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1600&auto=format&fit=crop" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <p class="kicker">Get in touch</p>
+      <h2>Tell me what you need.</h2>
+      <p class="lead">Warning. This is a static form. To contact, please find me on discord with @404zayenotfound. </p>
+
+      <form>
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" placeholder="Your name" aria-label="Name" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" placeholder="you@example.com" aria-label="Email" required>
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" placeholder="Please explain the kind of website you'd like done." aria-label="Message"></textarea>
+        </label>
+        <p class="hint">By submitting, you agree to be contacted back. </p>
+        <button class="btn" type="submit" aria-label="Send message">Send message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Portfolio.404zayenotfound • Built with pure HTML + CSS</p>
+    </div>
+  </footer>
+
+  <script>
+    // small nicety: dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
